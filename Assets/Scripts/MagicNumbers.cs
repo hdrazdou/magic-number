@@ -3,7 +3,7 @@ using UnityEngine;
 public class MagicNumbers : MonoBehaviour
 {
     public int Min = 1;
-    public int Max = 3000;
+    public int Max = 2000;
     private int _guess;
     
     private void Start()

@@ -8,7 +8,7 @@ public class DebugTextDisplay : MonoBehaviour
 
     void Start()
     {
-        // assigning Text component to the _debugText to use its properties (e.g.".text")
+        // assigning Text component to the _debugText
         _debugText = GetComponent<Text>();
     }
 
@@ -27,7 +27,7 @@ public class DebugTextDisplay : MonoBehaviour
     private void HandleLogMessageReceived(string logMessage, string stackTrace, LogType logType)
     {
         // Displaying only log messages
-        if (logType == LogType.Log) 
+        if (logType == LogType.Log)
         {
             // text property sets value to _debugText
             _debugText.text += logMessage + "\n";

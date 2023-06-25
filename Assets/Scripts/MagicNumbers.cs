@@ -6,13 +6,12 @@ public class MagicNumbers : MonoBehaviour
     public int Max = 2000;
     private int _guess;
     private int _moves;
-    
+
     private void Start()
     {
         Debug.Log($"Make a number from {Min} to {Max}.");
         CalcualateGuess();
         AskAboutGuess();
-        
     }
 
     private void AskAboutGuess()
@@ -28,14 +27,12 @@ public class MagicNumbers : MonoBehaviour
             Max = _guess;
             CalcualateGuess();
             AskAboutGuess();
-
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             Min = _guess;
             CalcualateGuess();
             AskAboutGuess();
-
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {

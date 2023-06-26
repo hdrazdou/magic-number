@@ -2,22 +2,22 @@ using UnityEngine;
 
 public class MagicNumbers : MonoBehaviour
 {
-    public int Min = 1;
+    #region Variables
+
     public int Max = 2000;
+    public int Min = 1;
     private int _guess;
     private int _moves;
+
+    #endregion
+
+    #region Unity lifecycle
 
     private void Start()
     {
         Debug.Log($"Make a number from {Min} to {Max}.");
         CalcualateGuess();
         AskAboutGuess();
-    }
-
-    private void AskAboutGuess()
-    {
-        Debug.Log($"Your number is {_guess}?");
-        _moves++;
     }
 
     private void Update()
@@ -46,8 +46,20 @@ public class MagicNumbers : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Private methods
+
+    private void AskAboutGuess()
+    {
+        Debug.Log($"Your number is {_guess}?");
+        _moves++;
+    }
+
     private void CalcualateGuess()
     {
         _guess = (Min + Max) / 2;
     }
+
+    #endregion
 }

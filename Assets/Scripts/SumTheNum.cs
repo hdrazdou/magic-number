@@ -2,18 +2,24 @@ using UnityEngine;
 
 public class SumTheNum : MonoBehaviour
 {
-    public int Min = 1;
-    public int Max = 9;
-    private int _totalAmount;
-    private int _moves;
-    public int TargetSum = 50;
+    #region Variables
 
-    void Start()
+    public int Max = 9;
+    public int Min = 1;
+    public int TargetSum = 50;
+    private int _moves;
+    private int _totalAmount;
+
+    #endregion
+
+    #region Unity lifecycle
+
+    private void Start()
     {
         Debug.Log($"Press any digit from {Min} to {Max}.");
     }
 
-    void Update()
+    private void Update()
     {
         for (KeyCode key = KeyCode.Alpha0; key <= KeyCode.Alpha9; key++)
         {
@@ -27,7 +33,7 @@ public class SumTheNum : MonoBehaviour
                     Debug.Log("------------------------------------------------");
                     _totalAmount = 0;
                     _moves = 0;
-                    Start(); 
+                    Start();
                 }
 
                 else if (_totalAmount < TargetSum)
@@ -38,9 +44,15 @@ public class SumTheNum : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Private methods
+
     private void _getTheSum(int digit)
     {
         _totalAmount += digit;
         _moves++;
     }
+
+    #endregion
 }

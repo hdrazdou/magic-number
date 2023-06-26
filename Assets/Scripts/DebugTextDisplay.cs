@@ -3,10 +3,16 @@ using UnityEngine.UI;
 
 public class DebugTextDisplay : MonoBehaviour
 {
+    #region Variables
+
     // Text is a component in Unity GameObject
     private Text _debugText;
 
-    void Start()
+    #endregion
+
+    #region Unity lifecycle
+
+    private void Start()
     {
         // assigning Text component to the _debugText
         _debugText = GetComponent<Text>();
@@ -24,6 +30,10 @@ public class DebugTextDisplay : MonoBehaviour
         Application.logMessageReceived -= HandleLogMessageReceived;
     }
 
+    #endregion
+
+    #region Private methods
+
     private void HandleLogMessageReceived(string logMessage, string stackTrace, LogType logType)
     {
         // Displaying only log messages
@@ -33,4 +43,6 @@ public class DebugTextDisplay : MonoBehaviour
             _debugText.text += logMessage + "\n";
         }
     }
+
+    #endregion
 }

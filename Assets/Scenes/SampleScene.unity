@@ -162,13 +162,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223157}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f3166ccf7005451b9eddf80696e02de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Min: 1
   Max: 2000
+  Min: 1
 --- !u!1 &112501012
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 112501014}
-  - component: {fileID: 112501013}
+  - component: {fileID: 112501015}
   m_Layer: 0
   m_Name: SumTheNum
   m_TagString: Untagged
@@ -186,21 +186,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &112501013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 112501012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49dde325046ec4e6097248f62f099a13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Min: 1
-  Max: 9
-  TargetSum: 50
 --- !u!4 &112501014
 Transform:
   m_ObjectHideFlags: 0
@@ -216,6 +201,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &112501015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112501012}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49dde325046ec4e6097248f62f099a13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Max: 9
+  Min: 1
+  TargetSum: 50
 --- !u!1 &293779500
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,12 +225,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 293779506}
+  - component: {fileID: 293779507}
   - component: {fileID: 293779505}
   - component: {fileID: 293779504}
   - component: {fileID: 293779503}
   - component: {fileID: 293779502}
   - component: {fileID: 293779501}
-  - component: {fileID: 293779507}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged

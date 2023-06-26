@@ -7,6 +7,7 @@ public class SumTheNum : MonoBehaviour
     public int Max = 9;
     public int Min = 1;
     public int TargetSum = 50;
+    
     private int _moves;
     private int _totalAmount;
 
@@ -16,7 +17,7 @@ public class SumTheNum : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log($"Press any digit from {Min} to {Max}.");
+        InitializeGame();
     }
 
     private void Update()
@@ -33,7 +34,7 @@ public class SumTheNum : MonoBehaviour
                     Debug.Log("------------------------------------------------");
                     _totalAmount = 0;
                     _moves = 0;
-                    Start();
+                    InitializeGame();
                 }
 
                 else if (_totalAmount < TargetSum)
@@ -52,6 +53,11 @@ public class SumTheNum : MonoBehaviour
     {
         _totalAmount += digit;
         _moves++;
+    }
+
+    private void InitializeGame()
+    {
+        Debug.Log($"Press any digit from {Min} to {Max}.");
     }
 
     #endregion

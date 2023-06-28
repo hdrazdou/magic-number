@@ -4,10 +4,11 @@ public class SumTheNum : MonoBehaviour
 {
     #region Variables
 
-    public int Max = 9;
-    public int Min = 1;
+    private const int _max = 9;
+    private const int _min = 1;
+    private const int KeyCodeOffset = 48;
     public int TargetSum = 50;
-    
+
     private int _moves;
     private int _totalAmount;
 
@@ -22,18 +23,16 @@ public class SumTheNum : MonoBehaviour
 
     private void Update()
     {
-        for (KeyCode key = KeyCode.Alpha0; key <= KeyCode.Alpha9; key++)
+        for (KeyCode key = KeyCode.Alpha1; key <= KeyCode.Alpha9; key++)
         {
             if (Input.GetKeyDown(key))
             {
-                _getTheSum((int)key - 48);
+                GetTheSum((int)key - KeyCodeOffset);
 
                 if (_totalAmount >= TargetSum)
                 {
                     Debug.Log($"All done! You've reached {TargetSum} in {_moves} moves.");
                     Debug.Log("------------------------------------------------");
-                    _totalAmount = 0;
-                    _moves = 0;
                     InitializeGame();
                 }
 
@@ -49,7 +48,7 @@ public class SumTheNum : MonoBehaviour
 
     #region Private methods
 
-    private void _getTheSum(int digit)
+    private void GetTheSum(int digit)
     {
         _totalAmount += digit;
         _moves++;
@@ -57,7 +56,9 @@ public class SumTheNum : MonoBehaviour
 
     private void InitializeGame()
     {
-        Debug.Log($"Press any digit from {Min} to {Max}.");
+        _totalAmount = 0;
+        _moves = 0;
+        Debug.Log($"Press any digit from {_min} to {_max}.");
     }
 
     #endregion

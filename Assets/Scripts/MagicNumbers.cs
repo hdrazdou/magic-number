@@ -6,7 +6,10 @@ public class MagicNumbers : MonoBehaviour
 
     public int Max = 2000;
     public int Min = 1;
-    
+
+    private int _currentMax;
+    private int _currentMin;
+
     private int _guess;
     private int _moves;
 
@@ -23,13 +26,13 @@ public class MagicNumbers : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            Max = _guess;
+            _currentMax = _guess;
             CalcualateGuess();
             AskAboutGuess();
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Min = _guess;
+            _currentMin = _guess;
             CalcualateGuess();
             AskAboutGuess();
         }
@@ -37,10 +40,6 @@ public class MagicNumbers : MonoBehaviour
         {
             Debug.Log($"Congrats! I've guessed, your number is {_guess}. It took {_moves} moves to guess.");
             Debug.Log("------------------------------------------------");
-            Min = 1;
-            Max = 2000;
-            _moves = 0;
-            _guess = 0;
             InitializeGame();
         }
     }
@@ -57,11 +56,15 @@ public class MagicNumbers : MonoBehaviour
 
     private void CalcualateGuess()
     {
-        _guess = (Min + Max) / 2;
+        _guess = (_currentMin + _currentMax) / 2;
     }
 
     private void InitializeGame()
     {
+        _moves = 0;
+        _guess = 0;
+        _currentMax = Max;
+        _currentMin = Min;
         Debug.Log($"Make a number from {Min} to {Max}.");
         CalcualateGuess();
         AskAboutGuess();

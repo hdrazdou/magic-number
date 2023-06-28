@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3166ccf7005451b9eddf80696e02de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Max: 2000
+  Max: 3000
   Min: 1
 --- !u!1 &112501012
 GameObject:
@@ -213,8 +213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49dde325046ec4e6097248f62f099a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Max: 9
-  Min: 1
   TargetSum: 50
 --- !u!1 &293779500
 GameObject:

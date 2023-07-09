@@ -1,17 +1,29 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MagicNumbers : MonoBehaviour
 {
     #region Variables
 
+    public TMP_Text CurrentGuess;
+
+    public TMP_Text DescriptionLabel;
+
+    public Button ExactButton;
+    public Button HigherButton;
+    public Button LowerButton;
+
     public int Max = 2000;
     public int Min = 1;
 
+    public static int Moves;
+    public TMP_Text MovesCounter;
+
     private int _currentMax;
     private int _currentMin;
-
     private int _guess;
-    private int _moves;
 
     #endregion
 
@@ -19,29 +31,42 @@ public class MagicNumbers : MonoBehaviour
 
     private void Start()
     {
-        InitializeGame();
+        Moves = 0;
+        _guess = 0;
+        _currentMax = Max;
+        _currentMin = Min;
+        DescriptionLabel.text = $"Make a number from {Min} to {Max}.";
+        MovesCounter.text = $"Moves: {Moves}";
+        CalcualateGuess();
+        AskAboutGuess();
+        LowerButton.onClick.AddListener(OnLowerButtonClicked);
+        HigherButton.onClick.AddListener(OnHigherButtonClicked);
+        ExactButton.onClick.AddListener(OnExactButtonClicked);
     }
 
-    private void Update()
+    #endregion
+
+    #region Public methods
+
+    public void OnExactButtonClicked()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            _currentMax = _guess;
-            CalcualateGuess();
-            AskAboutGuess();
-        }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            _currentMin = _guess;
-            CalcualateGuess();
-            AskAboutGuess();
-        }
-        else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log($"Congrats! I've guessed, your number is {_guess}. It took {_moves} moves to guess.");
-            Debug.Log("------------------------------------------------");
-            InitializeGame();
-        }
+        SceneManager.LoadScene("FinishScene");
+    }
+
+    public void OnHigherButtonClicked()
+    {
+        _currentMin = _guess;
+        UpdateMovesCounter();
+        CalcualateGuess();
+        AskAboutGuess();
+    }
+
+    public void OnLowerButtonClicked()
+    {
+        _currentMax = _guess;
+        UpdateMovesCounter();
+        CalcualateGuess();
+        AskAboutGuess();
     }
 
     #endregion
@@ -50,8 +75,7 @@ public class MagicNumbers : MonoBehaviour
 
     private void AskAboutGuess()
     {
-        Debug.Log($"Your number is {_guess}?");
-        _moves++;
+        CurrentGuess.text = $"Your number is {_guess}?";
     }
 
     private void CalcualateGuess()
@@ -59,15 +83,10 @@ public class MagicNumbers : MonoBehaviour
         _guess = (_currentMin + _currentMax) / 2;
     }
 
-    private void InitializeGame()
+    private void UpdateMovesCounter()
     {
-        _moves = 0;
-        _guess = 0;
-        _currentMax = Max;
-        _currentMin = Min;
-        Debug.Log($"Make a number from {Min} to {Max}.");
-        CalcualateGuess();
-        AskAboutGuess();
+        Moves++;
+        MovesCounter.text = $"Moves: {Moves}";
     }
 
     #endregion
